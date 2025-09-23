@@ -1,6 +1,9 @@
 import Image from "next/image";
 
 export default function Home() {
+  // Usar la variable de entorno pública
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
@@ -12,6 +15,16 @@ export default function Home() {
           height={38}
           priority
         />
+        
+        {/* NUEVA SECCIÓN: Mostrar la variable de entorno */}
+        <div className="bg-blue-100 dark:bg-blue-900 p-4 rounded-lg">
+          <h2 className="font-bold mb-2">✅ Variables de entorno funcionando:</h2>
+          <p><strong>API URL:</strong> {apiUrl || "No configurada"}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            Esta variable viene de: <code>.env.local</code>
+          </p>
+        </div>
+
         <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
           <li className="mb-2 tracking-[-.01em]">
             Get started by editing{" "}
